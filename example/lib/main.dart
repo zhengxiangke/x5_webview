@@ -18,6 +18,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     initPlatformState();
+    ///监听js传给flutter的调用
     X5Plugin.setMethodCallHandler((String msg) {
       print(msg);
     });
