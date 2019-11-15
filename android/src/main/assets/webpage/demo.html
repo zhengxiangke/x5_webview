@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>test</title>
+</head>
+<script type="text/javascript">
+//原生调用js传递数据的入口
+    function callback( name,  callbackId,  result)  {
+    if("getUserinfo" == name) {
+      alert(result);
+    }
+    if ("common" == name) {
+    //result = {"versionCode" : "243", "deviceId" : "1215413165"} 返回版本号和设备号
+     alert(result);
+    }
+
+    }
+    function onPause() {
+    alert("onPause")
+    }
+  function onResume() {
+    alert("onResume")
+    }
+ var intoGoodDetail = function() {
+        var data = {
+          "productId":14755,
+           "skuId": 0
+        };
+        var text =  JSON.stringify(data);
+        window.zhilunshangjia.call('intoGoodDetail', text, 0)
+    }
+
+var intoComfirmOrder = function() {
+        var data = {
+        "skuId":16052,
+        "quantity": 1,
+        "cartItemIds":[]
+        };
+         var text =  JSON.stringify(data);
+         window.zhilunshangjia.call('intoComfirmOrder',text, 0)
+        }
+
+
+
+
+</script>
+<body>
+<button id='butyon' type="button" onclick="intoGoodDetail()">进入商品详情页面</button>
+<br>
+<button type="button" onclick="intoComfirmOrder()">进入确认订单页面</button>
+<br>
+<button type="button" onclick="window.zhilunshangjia.call('getUserinfo','', 0)">获取用户信息</button>
+<br>
+<button type="button" onclick="window.zhilunshangjia.call('这是toast提示', 0)">调用原生的toast
+</button>
+<br>
+<button type="button" onclick="window.zhilunshangjia.call('common', '', 0)">获取公共数据
+</button>
+<br>
+</body>
+</html>
