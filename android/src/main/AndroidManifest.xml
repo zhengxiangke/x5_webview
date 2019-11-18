@@ -36,5 +36,10 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".FilechooserActivity"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:alwaysRetainTaskState="true"
+            android:windowSoftInputMode="stateHidden|adjustResize"/>
     </application>
 </manifest>

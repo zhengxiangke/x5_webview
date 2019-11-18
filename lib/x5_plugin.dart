@@ -35,6 +35,9 @@ class X5Plugin {
     }
   }
   ///打开简单的x5webview
+  ///支持视频播放
+  ///不支持打开相册
+  ///不支持桥接
   static Future<void> openWebActivity(String url, {String title}) async {
     if (defaultTargetPlatform == TargetPlatform.android) {
       final Map<String, dynamic> params = <String, dynamic>{
@@ -46,20 +49,21 @@ class X5Plugin {
       return;
     }
   }
-  ///监听android 发给flutter的数据 用于桥接
-  static void setMethodCallHandler (Function(String msg) callback) {
-    _channel.setMethodCallHandler((handler) => Future<void>(() {
-      //监听native发送的方法名及参数
-      switch (handler.method) {
-        case "bridge":
-          //代表webview桥接传过来 具体业务方法在参数的method
-//          Map<String, dynamic> json = jsonDecode(handler.arguments);
-          callback(handler.arguments);
-//          _send(handler.arguments);//handler.arguments表示native传递的方法参数
-          break;
-      }
-    }));
+  ///打开支持文件上传的页面
+  ///支持视频播放
+  ///不支持桥接
+  static Future<void> openFilechooserActivity(String url, {String title}) async {
+    if (defaultTargetPlatform == TargetPlatform.android) {
+      final Map<String, dynamic> params = <String, dynamic>{
+        'title': title,
+        'url': url
+      };
+      return await _channel.invokeMethod("openFilechooserActivity", params);
+    } else {
+      return;
+    }
   }
+
 
 
 }

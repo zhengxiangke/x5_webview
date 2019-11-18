@@ -1,7 +1,7 @@
 name: x5_plugin
-description: A new Flutter plugin.
+description: x5腾讯内核的支持 目前Android 已实现桥接 视频播放 相册打开  Ios只支持普通的页面显示
 version: 0.0.1
-author:
+author:郑相科
 homepage:
 
 environment:
@@ -10,6 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  webview_flutter: 0.3.10+4
 
 dev_dependencies:
   flutter_test:

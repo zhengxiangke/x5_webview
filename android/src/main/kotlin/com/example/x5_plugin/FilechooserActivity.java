@@ -19,6 +19,7 @@ public class FilechooserActivity extends Activity {
     private X5WebView webView;
     private ValueCallback<Uri> uploadFile;
     private ValueCallback<Uri[]> uploadFiles;
+    private String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,26 +28,26 @@ public class FilechooserActivity extends Activity {
         setContentView(R.layout.filechooser_layout);
 
         webView = (X5WebView) findViewById(R.id.web_filechooser);
-
+        url = getIntent().getStringExtra("url");
         webView.setWebChromeClient(new WebChromeClient() {
             // For Android 3.0+
             public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType) {
                 Log.i("test", "openFileChooser 1");
-                FilechooserActivity.this.uploadFile = uploadFile;
+                FilechooserActivity.this.uploadFile = uploadMsg;
                 openFileChooseProcess();
             }
 
             // For Android < 3.0
             public void openFileChooser(ValueCallback<Uri> uploadMsgs) {
                 Log.i("test", "openFileChooser 2");
-                FilechooserActivity.this.uploadFile = uploadFile;
+                FilechooserActivity.this.uploadFile = uploadMsgs;
                 openFileChooseProcess();
             }
 
             // For Android  > 4.1.1
             public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType, String capture) {
                 Log.i("test", "openFileChooser 3");
-                FilechooserActivity.this.uploadFile = uploadFile;
+                FilechooserActivity.this.uploadFile = uploadMsg;
                 openFileChooseProcess();
             }
 
@@ -62,7 +63,7 @@ public class FilechooserActivity extends Activity {
 
         });
 
-        webView.loadUrl("file:///android_asset/webpage/fileChooser.html");
+        webView.loadUrl(url);
 
     }
 
@@ -101,6 +102,10 @@ public class FilechooserActivity extends Activity {
             if (null != uploadFile) {
                 uploadFile.onReceiveValue(null);
                 uploadFile = null;
+            }
+            if (null != uploadFiles) {
+                uploadFiles.onReceiveValue(null);
+                uploadFiles = null;
             }
 
         }

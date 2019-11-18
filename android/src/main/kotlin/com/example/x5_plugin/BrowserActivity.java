@@ -37,10 +37,11 @@ public class BrowserActivity extends Activity {
 	/**
 	 * 作为一个浏览器的示例展示出来，采用android+web的模式
 	 */
-	private X5WebView mWebView;
+	private WebView mWebView;
 	ImageView iv_titlebar_back;
 	TextView tv_title;
 	private ValueCallback<Uri> uploadFile;
+	private ValueCallback<Uri[]> uploadFiles;
 	private String url;
 
 	@Override
@@ -99,7 +100,7 @@ public class BrowserActivity extends Activity {
 
 			}
 		});
-		mWebView.addJavascriptInterface(new JsHook(this, mWebView), "zhilunshangjia");
+		mWebView.addJavascriptInterface(new JsHook(), "X5Web");
 
 		mWebView.setWebChromeClient(new WebChromeClient() {
 
@@ -163,25 +164,25 @@ public class BrowserActivity extends Activity {
 		});
 
 		WebSettings webSetting = mWebView.getSettings();
-		webSetting.setAllowFileAccess(true);
-		webSetting.setLayoutAlgorithm(LayoutAlgorithm.NARROW_COLUMNS);
-		webSetting.setSupportZoom(true);
-		webSetting.setBuiltInZoomControls(true);
-		webSetting.setUseWideViewPort(true);
-		webSetting.setSupportMultipleWindows(false);
-		// webSetting.setLoadWithOverviewMode(true);
-		webSetting.setAppCacheEnabled(true);
-		// webSetting.setDatabaseEnabled(true);
+//		webSetting.setAllowFileAccess(true);
+//		webSetting.setLayoutAlgorithm(LayoutAlgorithm.NARROW_COLUMNS);
+//		webSetting.setSupportZoom(true);
+//		webSetting.setBuiltInZoomControls(true);
+//		webSetting.setUseWideViewPort(true);
+//		webSetting.setSupportMultipleWindows(false);
+//		// webSetting.setLoadWithOverviewMode(true);
+//		webSetting.setAppCacheEnabled(true);
+//		// webSetting.setDatabaseEnabled(true);
 		webSetting.setDomStorageEnabled(true);
 		webSetting.setJavaScriptEnabled(true);
-		webSetting.setGeolocationEnabled(true);
-		webSetting.setAppCacheMaxSize(Long.MAX_VALUE);
-		webSetting.setAppCachePath(this.getDir("appcache", 0).getPath());
-		webSetting.setDatabasePath(this.getDir("databases", 0).getPath());
-		webSetting.setGeolocationDatabasePath(this.getDir("geolocation", 0)
-				.getPath());
-		// webSetting.setPageCacheCapacity(IX5WebSettings.DEFAULT_CACHE_CAPACITY);
-		webSetting.setPluginState(WebSettings.PluginState.ON_DEMAND);
+//		webSetting.setGeolocationEnabled(true);
+//		webSetting.setAppCacheMaxSize(Long.MAX_VALUE);
+//		webSetting.setAppCachePath(this.getDir("appcache", 0).getPath());
+//		webSetting.setDatabasePath(this.getDir("databases", 0).getPath());
+//		webSetting.setGeolocationDatabasePath(this.getDir("geolocation", 0)
+//				.getPath());
+//		// webSetting.setPageCacheCapacity(IX5WebSettings.DEFAULT_CACHE_CAPACITY);
+//		webSetting.setPluginState(WebSettings.PluginState.ON_DEMAND);
 		// webSetting.setRenderPriority(WebSettings.RenderPriority.HIGH);
 		// webSetting.setPreFectch(true);
 			mWebView.loadUrl(url);

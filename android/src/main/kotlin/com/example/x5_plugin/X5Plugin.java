@@ -23,11 +23,13 @@ public class X5Plugin implements MethodChannel.MethodCallHandler {
 
          channel = new MethodChannel(registrar.messenger(), "x5_plugin");
         channel.setMethodCallHandler(new X5Plugin(registrar.context()));
-
+        //设置标识
+        registrar.platformViewRegistry().registerViewFactory("com.example/x5Plugin", new X5WebViewFactory(registrar.messenger(), registrar.activeContext()));
 
     }
 
     //调用flutter端方法，无返回值
+
     public static void sendFlutter(String method, Object o) {
         channel.invokeMethod(method, o);
     }
@@ -35,6 +37,7 @@ public class X5Plugin implements MethodChannel.MethodCallHandler {
     public static void sendFlutter(String method, Object o, MethodChannel.Result result) {
         channel.invokeMethod(method, o, result);
     }
+
 
     @Override
     public void onMethodCall(MethodCall methodCall, final MethodChannel.Result result) {
@@ -70,6 +73,12 @@ public class X5Plugin implements MethodChannel.MethodCallHandler {
             //打开一个简单的webview
             String url = methodCall.argument("url");
             Intent intent = new Intent(mContext, BrowserActivity.class);
+            intent.putExtra("url", url);
+            mContext.startActivity(intent);
+        } else if (methodCall.method .equals("openFilechooserActivity")) {
+            //打开一个支持图片上传的页面
+            String url = methodCall.argument("url");
+            Intent intent = new Intent(mContext, FilechooserActivity.class);
             intent.putExtra("url", url);
             mContext.startActivity(intent);
         }else {
