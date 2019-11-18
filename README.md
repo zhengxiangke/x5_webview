@@ -12,3 +12,4 @@ Android and/or iOS.
 For help getting started with Flutter, view our 
 [online documentation](https://flutter.dev/docs), which offers tutorials, 
 samples, guidance on mobile development, and a full API reference.
+x5腾讯内核的支持 目前Android 已实现桥接 视频播放 相册打开  Ios只支持普通的页面显示
