@@ -58,13 +58,9 @@ class _HomePageState extends State<HomePage> {
         children: <Widget>[
           GestureDetector(
             onTap: () {
-//            Navigator.push(
-//              context,
-//              new MaterialPageRoute(builder: (context) => new Demo("https://tinypng.com/")),
-//            );
+
               X5Plugin.openFilechooserActivity("file:///android_asset/webpage/fileChooser.html",
                   title: "xx");
-//              X5Plugin.openWebActivity("file:///android_asset/webpage/demo.html");
             },
             child: Container(
               child: Text("支持打开相册页面 支持视频 不支持桥接"),
@@ -76,12 +72,8 @@ class _HomePageState extends State<HomePage> {
           SizedBox(height: 30,),
           GestureDetector(
             onTap: () {
-//            Navigator.push(
-//              context,
-//              new MaterialPageRoute(builder: (context) => new Demo("https://tinypng.com/")),
-//            );
+//
               X5Plugin.openWebActivity("https://www.youku.com/", title: "xx");
-//              X5Plugin.openWebActivity("file:///android_asset/webpage/demo.html");
             },
             child: Container(
               child: Text("支持视频 不支持桥接和相册"),
