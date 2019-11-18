@@ -27,7 +27,6 @@ class _HomePageState extends State<HomePage> {
           SizedBox(height: 30,),
           GestureDetector(
             onTap: () {
-//
               X5Plugin.openWebActivity("https://www.youku.com/", title: "xx");
             },
             child: Container(
