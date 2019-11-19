@@ -125,4 +125,4 @@ class _DemoState extends State<Demo> {
 创作不易 本人会持续研发后续版本
 
 
-<img src="http://chuantu.xyz/t6/703/1574144272x992245926.jpg" width="500" hegiht="313" align=center />
+<img src="http://chuantu.xyz/t6/703/1574144272x992245926.jpg" width="300" hegiht="300" align=center />
