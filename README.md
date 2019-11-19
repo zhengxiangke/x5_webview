@@ -5,18 +5,16 @@ x5腾讯内核的支持
 
       Ios只支持普通的页面显示
 
-
+  x5webview 初始化
   ```dart
-    x5webview 初始化
       ///注意: 需要首先授权存储权限 否则 X5内核加载失败
         X5Plugin.init().then((isOk) {
           x5Init = isOk;
           print(isOk ? "X5内核成功加载" : "X5内核加载失败");
         });
   ```
-
-```dart
   提供了三种方式 一般建议第三种
+```dart
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
@@ -75,9 +73,8 @@ class _HomePageState extends State<HomePage> {
   }
 }
 ```
-
-```dart
 一般建议这种方式
+```dart
 class Demo extends StatefulWidget {
   String url;
 
