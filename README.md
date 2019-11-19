@@ -1,20 +1,22 @@
 
 x5腾讯内核的支持
 
-目前Android 已实现桥接 视频播放 相册打开
+    目前Android 已实现桥接 视频播放 相册打开
 
-  Ios只支持普通的页面显示
+      Ios只支持普通的页面显示
 
-  x5webview 初始化
+
   ```dart
+    x5webview 初始化
       ///注意: 需要首先授权存储权限 否则 X5内核加载失败
         X5Plugin.init().then((isOk) {
           x5Init = isOk;
           print(isOk ? "X5内核成功加载" : "X5内核加载失败");
         });
   ```
-  提供了三种方式 一般建议第三种
+
 ```dart
+  提供了三种方式 一般建议第三种
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
@@ -73,8 +75,9 @@ class _HomePageState extends State<HomePage> {
   }
 }
 ```
-一般建议这种方式
+
 ```dart
+一般建议这种方式
 class Demo extends StatefulWidget {
   String url;
 
