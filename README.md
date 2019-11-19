@@ -121,3 +121,6 @@ class _DemoState extends State<Demo> {
   }
 }
 ```
+创作不易 本人会持续研发后续版本
+![avatar](http://chuantu.xyz/t6/703/1574144272x992245926.jpg)
+欢迎添加QQ群一起讨论 883130953
