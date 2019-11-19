@@ -122,8 +122,9 @@ class _DemoState extends State<Demo> {
 }
 ```
 欢迎添加QQ群一起讨论 883130953
+
 创作不易 支持下  本人会持续研发后续版本
 
-<p><img src="http://chuantu.xyz/t6/703/1574144272x992245926.jpg" width="300" hegiht="200" align=center />
-   <img src="http://chuantu.xyz/t6/703/1574145134x1031866013.jpg" width="300" hegiht="200" align=center /></p>
+<center class="half"><img src="http://chuantu.xyz/t6/703/1574144272x992245926.jpg" width="300" hegiht="200" align=center />
+   <img src="http://chuantu.xyz/t6/703/1574145134x1031866013.jpg" width="300" hegiht="200" align=center /></center>
 
