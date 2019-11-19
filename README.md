@@ -1,5 +1,16 @@
 
-x5腾讯内核的支持 目前Android 已实现桥接 视频播放 相册打开  Ios只支持普通的页面显示
+x5腾讯内核的支持
+目前Android 已实现桥接 视频播放 相册打开
+  Ios只支持普通的页面显示
+  x5webview 初始化
+  ```dart
+      ///注意: 需要首先授权存储权限 否则 X5内核加载失败
+        X5Plugin.init().then((isOk) {
+          x5Init = isOk;
+          print(isOk ? "X5内核成功加载" : "X5内核加载失败");
+        });
+  ```
+  提供了三种方式 一般建议第三种
 ```dart
 class _HomePageState extends State<HomePage> {
   @override
@@ -55,6 +66,54 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
+    );
+  }
+}
+```
+一般建议这种方式
+```dart
+class Demo extends StatefulWidget {
+  String url;
+
+  Demo(this.url);
+
+  @override
+  _DemoState createState() => _DemoState();
+}
+
+class _DemoState extends State<Demo> {
+  X5WebViewController _controller;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold (
+      appBar: AppBar(
+          title: Text("webview实例")),
+      body:  X5Webview(url: widget.url,
+      onPageFinished: (String url) async{
+      ///桥接名字
+        var listName = ["X5Web"];
+        _controller.addJavascriptChannels(listName,
+                (name, data) {
+              switch (name) {
+                case "X5Web":
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          title: Text("获取到的字符串为："),
+                          content: Text(data),
+                        );
+                      });
+                  break;
+                case "Toast":
+                  print(data);
+                  break;
+              }
+            });
+      },
+      onWebViewCreated:(X5WebViewController controller) {
+        _controller = controller;
+      } ,)
     );
   }
 }
